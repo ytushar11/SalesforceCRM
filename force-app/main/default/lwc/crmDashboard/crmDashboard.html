@@ -1,3 +1,12 @@
 <template>
-    
+    <lightning-card title="Salesforce CRM Dashboard">
+        <div class="slds-p-around_medium slds-grid slds-wrap slds-gutters">
+            <div class="slds-col slds-size_1-of-1">
+                <c-crm-data-table accounts={accounts}></c-crm-data-table>
+            </div>
+            <div class="slds-col slds-size_1-of-1">
+                <c-crm-graph chart-data={accounts}></c-crm-graph>
+            </div>
+        </div>
+    </lightning-card>
 </template>

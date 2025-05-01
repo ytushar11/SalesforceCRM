@@ -1,0 +1,11 @@
+public with sharing class CRMDataController {
+   @AuraEnabled(cacheable=true)
+    public static List<Account> fetchAccounts(){
+        List<Account> laccount = [select name,AccountId,address from Account];
+        return laccount;
+    }
+      @AuraEnabled
+    public static List<Account> searchAccounts(String keyword) {
+        return [SELECT Id, Name, Industry, AnnualRevenue FROM Account WHERE Name LIKE :('%' + keyword + '%')];
+    }
+}
