@@ -1,27 +1,17 @@
-import { LightningElement,api } from 'lwc';
-import chartjs from '@salesforce/resourceUrl/chartjs';
-import { loadScript } from 'lightning/platformResourceLoader';
+import { LightningElement, api } from 'lwc';
 
 export default class Graphs extends LightningElement {
-    chart;
     @api chartData = [];
 
-    renderedCallback() {
-        if (this.chart) return;
-
-        loadScript(this, chartjs).then(() => {
-            const ctx = this.template.querySelector('canvas').getContext('2d');
-            this.chart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: this.chartData.map(a => a.Name),
-                    datasets: [{
-                        label: 'Revenue',
-                        data: this.chartData.map(a => a.AnnualRevenue),
-                        backgroundColor: '#0070d2'
-                    }]
-                }
-            });
+    get chartBars() {
+        // Normalize values to a percentage scale for display
+        const max = Math.max(...this.chartData.map(a => a.AnnualRevenue), 1);
+        return this.chartData.map(item => {
+            return {
+                name: item.Name,
+                value: item.AnnualRevenue,
+                height: (item.AnnualRevenue / max) * 100
+            };
         });
     }
 }

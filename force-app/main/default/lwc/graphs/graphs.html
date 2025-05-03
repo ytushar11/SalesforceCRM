@@ -1,5 +1,10 @@
 <template>
-    <lightning-card title="Revenue by Account">
-        <canvas style="width:100%;height:300px;"></canvas>
-    </lightning-card>
+    <div class="chart-container">
+        <template for:each={chartBars} for:item="bar">
+            <div class="bar-wrapper" key={bar.name}>
+                <div class="bar" style="height: {bar.height}%"></div>
+                <div class="label">{bar.name}</div>
+            </div>
+        </template>
+    </div>
 </template>
