@@ -1,4 +1,4 @@
-import { LightningElement } from 'lwc';
+import { LightningElement ,track,wire} from 'lwc';
 import getTopAccounts from '@salesforce/apex/CRMDataController.fetchAccounts';
 export default class CrmDashboard extends LightningElement {
     @track accounts = [];

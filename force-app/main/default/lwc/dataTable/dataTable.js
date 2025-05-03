@@ -1,4 +1,4 @@
-import { LightningElement } from 'lwc';
+import { LightningElement,api } from 'lwc';
 const COLUMNS = [
     { label: 'Name', fieldName: 'Name' },
     { label: 'Industry', fieldName: 'Industry' },
