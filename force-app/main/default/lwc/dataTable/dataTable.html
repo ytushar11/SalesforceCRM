@@ -1,3 +1,10 @@
 <template>
-    
+    <lightning-card title="Top Accounts">
+        <lightning-datatable
+            key-field="Id"
+            data={accounts}
+            columns={columns}
+            hide-checkbox-column="true">
+        </lightning-datatable>
+    </lightning-card>
 </template>

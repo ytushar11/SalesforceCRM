@@ -1,3 +1,10 @@
 import { LightningElement } from 'lwc';
-
-export default class DataTable extends LightningElement {}
+const COLUMNS = [
+    { label: 'Name', fieldName: 'Name' },
+    { label: 'Industry', fieldName: 'Industry' },
+    { label: 'Revenue', fieldName: 'AnnualRevenue', type: 'currency' }
+];
+export default class DataTable extends LightningElement {
+    @api accounts = [];
+    columns = COLUMNS;
+}
