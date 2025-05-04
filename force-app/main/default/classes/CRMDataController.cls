@@ -1,7 +1,7 @@
 public with sharing class CRMDataController {
    @AuraEnabled(cacheable=true)
     public static List<Account> fetchAccounts(){
-        List<Account> laccount = [select name,AccountId,address from Account];
+        List<Account> laccount = [select name,id ,Industry, AnnualRevenue  from Account];
         return laccount;
     }
       @AuraEnabled
